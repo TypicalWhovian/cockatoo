@@ -1,0 +1,6 @@
+.idea/
+vendor/
+dist/
+dummy.json
+.DS_Store
+cockatoo.iml
