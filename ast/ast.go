@@ -1,6 +1,7 @@
 package ast
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -72,8 +73,12 @@ type LogicalOp struct {
 }
 
 func (s *SelectStmt) String() string {
-	res, _ := json.MarshalIndent(s, "", "  ")
-	return string(res)
+	buffer := &bytes.Buffer{}
+	encoder := json.NewEncoder(buffer)
+	encoder.SetEscapeHTML(false)
+	encoder.SetIndent("", "  ")
+	encoder.Encode(s)
+	return buffer.String()
 }
 
 func (s *CreateTableStmt) String() string {

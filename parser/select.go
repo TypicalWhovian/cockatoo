@@ -159,7 +159,7 @@ func parseSimpleExpression(ts *TokenStream) (ast.Expr, error) {
 
 	_, val := ts.Current()
 	if _, ok := validOps[val]; !ok {
-		return nil, fmt.Errorf("%w: expected comparison operator, got %q", ErrSyntaxError, val)
+		return nil, fmt.Errorf("%w: expected comparison operator (>, <, =, !=, >=, <=) in 'WHERE' clause, got %q", ErrSyntaxError, val)
 	}
 
 	operator := val
