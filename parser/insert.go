@@ -91,7 +91,7 @@ func parseValue(ts *TokenStream) (ast.Expr, error) {
 		return &ast.LiteralInt{Value: intVal}, nil
 	case sqllexer.STRING:
 		ts.Next()
-		return &ast.LiteralString{Value: val}, nil
+		return &ast.LiteralString{Value: val[1 : len(val)-1]}, nil
 	case sqllexer.NULL:
 		ts.Next()
 		return &ast.LiteralNull{}, nil
